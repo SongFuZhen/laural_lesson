@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 1</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "hello world!"
+            }
+        });
+
+
+        // 命令式求数组中的倍数
+        const arr = [1, 2, 3, 4, 5]
+        let newArr = []
+        for(let i = 0; i< arr.length; i++){
+            newArr.push(arr[i] * 2)
+        }
+        console.log(newArr)
+
+        // 函数式求数组中的倍数
+        const newArr2 = arr.map(d => d * 2 )
+        console.log(newArr2)
+    
+    </script>
+</body>
+
+</html>
