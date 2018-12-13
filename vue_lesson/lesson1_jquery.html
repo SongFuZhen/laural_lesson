@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 1 jquery</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- first sample -->
+        <input type="text" id="msg" v-model="msg" />
+        <p id="content"></p>
+
+        <hr />
+
+        <input type="text" id="todo"> <span style="color: red;" id="warning"></span>
+        <ul id="list"></ul>
+    </div>
+
+    <script type="text/javascript">
+        $("#msg").keyup(function () {
+            $("#content").html($("#msg").val())
+        })
+
+        $("#todo").keydown(function (e) {
+            if (e.keyCode === 13) {
+                var things = $("#todo").val()
+
+                if (things === "") {
+                    $("#warning").html('请输入要干的事')
+                } else {
+                    var li = "<li>" + things + "</li>"
+                    $("#list").append(li)
+                    $("#todo").val('')
+                    $("#warning").html('')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

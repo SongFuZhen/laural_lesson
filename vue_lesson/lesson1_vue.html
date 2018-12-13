@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 1 vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="msg" v-model="msg" v-focus />
+        <p id="content">{{msg}}</p>
+
+        <hr />
+
+        <input type="text" id="todo" v-model="things" @keyup.enter="addTodo">
+        <span style="color: red">{{warning}}</span>
+
+        <ul id="list" v-for="todo in todoList">
+            <li>{{todo}}</li>
+        </ul>
+
+        <hr />
+        <p v-html="pHtml"></p>
+    </div>
+
+    <script>
+        Vue.directive('focus', {
+            inserted: function (el) {
+                el.focus()
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+
+                things: '',
+                warning: '',
+                todoList: [
+                    "学Vue",
+                    "当前端"
+                ],
+
+                pHtml: '<i>Show Me!</i>',
+            },
+            methods: {
+                addTodo() {
+                    if (this.things !== "") {
+                        this.todoList.push(this.things)
+                        this.warning = ''
+                        this.things = ''
+                    } else {
+                        this.warning = '请输入要干的事'
+                    }
+                }
+            },
+            // render(createElement) {
+            //     return createElement(
+            //         'div',
+            //         {
+            //             attr: {
+            //                 'class': 'test'
+            //             },
+            //             on: {
+            //                 click: this.click
+            //             }
+            //         }
+            //     )
+            // }
+            // render() {
+            //     return ( <div class = 'test' onClick = { this.click } > </div>
+            //     )
+            // }
+
+            directives: {
+                focus: {
+                    inserted: function (el) {
+                        el.focus()
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

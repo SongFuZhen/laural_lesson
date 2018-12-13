@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson1 Javascript</title>
+</head>
+
+<body>
+    <input type="text" id="msg">
+    <p id="content"></p>
+
+    <hr />
+
+    <input type="text" id="todo"> <span style="color: red;" id="warning"></span>
+    <ul id="list"></ul>
+
+
+    <hr />
+
+    <script>
+        document.getElementById('msg').addEventListener('keyup', function () {
+            document.getElementById('content').innerHTML = document.getElementById('msg').value
+        })
+
+        document.getElementById('todo').addEventListener('keydown', function (e) {
+            if (e.keyCode === 13) {
+                var things = document.getElementById('todo').value
+
+                if (things !== "") {
+                    var li = document.createElement('li')
+                    li.innerHTML = things
+
+                    document.getElementById('list').append(li)
+
+                    document.getElementById('warning').innerHTML = ''
+                    document.getElementById('todo').value = ''
+                } else {
+                    document.getElementById('warning').innerHTML = '请输入要干的事'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
