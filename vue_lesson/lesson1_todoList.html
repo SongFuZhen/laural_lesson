@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO List</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>TODO List</h1>
+        
+        <input type="text" v-model="things" @keyup.enter="addTodo">
+        
+        <p>{{things}}</p>
+
+        <ul v-for="todo in todoList">
+            <li>{{todo}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                things: '',
+                todoList: [
+                    "干活",
+                    "写代码"
+                ]
+            },
+            methods: {
+                addTodo() {
+                    this.todoList.push(this.things)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
